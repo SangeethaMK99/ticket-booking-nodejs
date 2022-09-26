@@ -6,7 +6,7 @@ async function img(){
     console.log(DbConfig);
     try{ 
       console.log("model")
-      const img=await db.query("SELECT name FROM images" )
+      const img=await db.query("SELECT *FROM images" )
       console.log(img);
       return img
     }

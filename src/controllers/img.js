@@ -5,16 +5,18 @@ async function imageSlider(req,res){
     try{
     const img= await imgModel.img()
     console.log(img);
-    const im ="http://localhost:8000/upload/images/"
-    const imgs=img.map((ele)=>im + ele.name)
-    return res.status(200).json({status:true,message:"images is loaded", imgs:imgs})   
+    // const im ="http://localhost:8000/upload/images/"
+    // const imgs=img.map((ele)=>im + ele.name)
+    return res.status(200).json({status:true,message:"images is loaded", img:img})   
 }
     catch(err){
         console.log(err)
         return res.status(500).json({message:"error"})
     }
 }
+ 
 module.exports={imageSlider}
+
 
 
 
