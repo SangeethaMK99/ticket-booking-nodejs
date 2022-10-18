@@ -1,8 +1,11 @@
 const express=require('express')
 const app= express()
 app.use(express.json())
+const config =  require('./config');
+
 // const cors=require('cors')
 // app.use(cors())
+
 
 app.use((req,res,next)=>{
 
@@ -20,8 +23,10 @@ app.use(express.static('public'));
 app.use('/imgs', express.static('public/upload/images'));
 
 
+// app.listen(8000,()=>{
+//     console.log("app started");
+// });
 
-app.listen(8000,()=>{
+app.listen(config.PORT, config.HOST, () => {
     console.log("app started");
-});
-
+})

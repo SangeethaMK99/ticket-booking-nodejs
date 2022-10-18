@@ -5,9 +5,11 @@ async function signup(username,email,password){
       const db= DbConfig.makeDb()
       try{ 
         console.log("model");
-        const reg= await db.query(`INSERT INTO  signup(username,email,password)VALUES("${username}","${email}","${password}")`)
-        // console.log(reg);
-        return true
+        const signUpEmail=await db.query("SELECT email FROM signup WHERE email=? ", [email])
+        if(signUpEmail.length==0){
+          const reg = await db.query(`INSERT INTO  signup(username,email,password)VALUES("${username}","${email}","${password}")`)       
+        }
+      return signUpEmail
       }
         catch (err) {
             console.log(err);
@@ -18,7 +20,6 @@ async function signup(username,email,password){
               }
          
 }
-
 
 async function signin(username,password){
 

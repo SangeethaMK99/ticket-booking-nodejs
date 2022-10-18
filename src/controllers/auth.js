@@ -23,8 +23,8 @@ async function signup(req,res){
         res.status(200).send({status:false, message:"invalid password"})
     }
     if(username!="" && email!="" && password!=""){
-        await authModel.signup(username,email,password)
-        return res.status(200).json({status:true, message:"user successfully registered "})
+        const data=await authModel.signup(username,email,password)
+        return res.status(200).json({status:true, message:"user successfully registered ",data:data})
     }
 }
     catch(err){
