@@ -4,10 +4,6 @@ require('dotenv').config()
 
 function makeDb(){
        const config={
-            // host:'localhost',
-            // database:'bus_reservation',
-            // user:'root',
-            // password:''
             host:process.env.HOST,
             database:process.env.DB_NAME,
             user:process.env.DB_USER,
@@ -21,7 +17,7 @@ function makeDb(){
       return util.promisify( connection.query )
         .call( connection, sql, args );
     },
-    close() {
+    close(){
       return util.promisify( connection.end ).call( connection );
     }
   }

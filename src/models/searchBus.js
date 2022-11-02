@@ -2,12 +2,12 @@ const DbConfig=require('../library/db')
 
 async function searchBus(startingPoint,endPoint,scheduledate){
 
-    const db= DbConfig.makeDb()
+    const db= DbConfig.makeDb()                                
     console.log(db);
     try{ 
-      const availableBus= await db.query("SELECT places.starting_point,places.stop_points,places.fare_amount,schedule.date,schedule.time,schedule.available_seats,bus.name,bus.total_seats,places.destination FROM schedule JOIN places ON places.id= schedule.route_id JOIN bus ON schedule.route_id=bus.id WHERE places.starting_point=? AND places.destination=? AND schedule.date=? ",[startingPoint,endPoint,scheduledate])
-      console.log("availability",availableBus);
+      const availableBus= await db.query(" SELECT p.starting_point,p.stop_points,p.fare_amount,s.date,s.time,s.available_seats,b.name,b.category,b.total_seats,p.destination FROM schedule as s JOIN route as r  ON s.route_id= r.id JOIN places as p ON p.id=r.places_id JOIN bus as b ON b.id=r.bus_id WHERE p.starting_point=? AND p.destination=? AND s.date=? ",[startingPoint,endPoint,scheduledate])
       return availableBus
+
     }
       catch (err) {
           console.log(err);

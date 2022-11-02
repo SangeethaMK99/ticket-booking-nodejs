@@ -1,11 +1,13 @@
 const DbConfig=require('../library/db')
 
-async function placeCard(){
+async function bus(){
 
     const db= DbConfig.makeDb()
+    console.log(DbConfig);
     try{ 
-      const places= await db.query("SELECT * FROM place_card" )
-      return places
+      console.log("model")
+      const bus=await db.query("SELECT *FROM bus" )
+      return bus
     }
       catch (err) {
           console.log(err);
@@ -15,7 +17,4 @@ async function placeCard(){
           await db.close();
         }  
   }
-module.exports = {placeCard}
-  
-
-  
+module.exports ={bus}
