@@ -6,7 +6,7 @@ async function ViewTickets(req,res){
         console.log("bookid",bookPassengerId);
 
     const data= await ticketModel.ViewTickets(bookPassengerId)
-    console.log( "data for tickets",data);
+    // console.log( "data for tickets",data);
     return res.status(200).json({status:true, message:"passenger booked", data:data})   
 }
     catch(err){

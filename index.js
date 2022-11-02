@@ -23,10 +23,6 @@ app.use(express.static('public'));
 app.use('/imgs', express.static('public/upload/images'));
 
 
-// app.listen(8000,()=>{
-//     console.log("app started");
-// });
-
 app.listen(config.PORT, config.HOST, () => {
     console.log("app started");
 })
