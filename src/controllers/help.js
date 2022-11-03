@@ -7,6 +7,8 @@ async function passengerHelp(req,res){
     const name=req.body.name
     console.log(req.body.name);
     const phone=req.body.phone
+    const header=req.headers.authorization
+    console.log("..............headerdata",header);
     if(name!="" && phone!="" ){
         const data=await customerHelpModel.passengerHelp(name,phone)
         return res.status(200).json({status:true, message:"customer help successfully registered ",data:data})
